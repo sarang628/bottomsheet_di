@@ -16,7 +16,7 @@ import dagger.hilt.components.SingletonComponent
 class ShareModule
 {
     @Provides
-    fun providesGetFollowerUseCase(apiProfile: ApiProfile, loggedInUserDao: LoggedInUserDao, sessionService: SessionService): GetFollowerUseCase
+    fun providesGetFollowerUseCase(apiProfile: ApiProfile, sessionService: SessionService): GetFollowerUseCase
     {
         return object : GetFollowerUseCase
         {
