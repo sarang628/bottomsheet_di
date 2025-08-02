@@ -1,8 +1,5 @@
 package com.sarang.torangbottomsheet.di.bottomsheet
 
-import com.sarang.torang.api.ApiProfile
-import com.sarang.torang.data.dao.LoggedInUserDao
-import com.sarang.torang.session.SessionService
 import com.sarang.torang.data.bottomsheet.User
 import com.sarang.torang.usecase.GetFollowerUseCase
 import dagger.Module
@@ -16,17 +13,18 @@ import dagger.hilt.components.SingletonComponent
 class ShareModule
 {
     @Provides
-    fun providesGetFollowerUseCase(apiProfile: ApiProfile, sessionService: SessionService): GetFollowerUseCase
+    fun providesGetFollowerUseCase(/*apiProfile: ApiProfile, sessionService: SessionService*/): GetFollowerUseCase
     {
         return object : GetFollowerUseCase
         {
             override suspend fun invoke(): List<User>
             {
-                val token = sessionService.getToken() ?: throw Exception("로그인을 해주세요.")
+//                val token = sessionService.getToken() ?: throw Exception("로그인을 해주세요.")
 
-                return apiProfile.getMyFollowing(token).map {
-                    User(userId = it.followerId, userName = it.userName, picture = it.profilePicUrl)
-                }
+//                return apiProfile.getMyFollowing(token).map {
+//                    User(userId = it.followerId, userName = it.userName, picture = it.profilePicUrl)
+//                }
+                return listOf()
             }
         }
     }
