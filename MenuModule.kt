@@ -1,8 +1,8 @@
 package com.sarang.torangbottomsheet.di.bottomsheet
 
 import android.util.Log
-import com.sarang.torang.data.dao.LoggedInUserDao
-import com.sarang.torang.data.dao.ReviewDao
+import com.sarang.torang.core.database.dao.LoggedInUserDao
+import com.sarang.torang.core.database.dao.ReviewDao
 import com.sarang.torang.usecase.IsMyReviewUseCase
 import dagger.Module
 import dagger.Provides

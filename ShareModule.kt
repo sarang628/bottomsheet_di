@@ -1,7 +1,7 @@
 package com.sarang.torangbottomsheet.di.bottomsheet
 
 import com.sarang.torang.api.ApiProfile
-import com.sarang.torang.data.dao.LoggedInUserDao
+import com.sarang.torang.core.database.dao.LoggedInUserDao
 import com.sarang.torang.session.SessionService
 import com.sarang.torang.data.bottomsheet.User
 import com.sarang.torang.usecase.GetFollowerUseCase
