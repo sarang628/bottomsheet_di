@@ -6,28 +6,26 @@ import com.sarang.torang.core.database.dao.LoggedInUserDao
 import com.sarang.torang.session.SessionService
 import com.sarang.torang.data.bottomsheet.User
 import com.sarang.torang.usecase.GetFollowerUseCase
+import com.sarang.torang.usecase.SendShareUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.delay
 
 
 @Module
 @InstallIn(SingletonComponent::class)
-class ShareModule
+class SendShareUseCaseImpl
 {
     @Provides
-    fun providesGetFollowerUseCase(apiProfile: ApiProfile, sessionService: SessionService): GetFollowerUseCase
+    fun providesGetFollowerUseCase(apiProfile: ApiProfile, sessionService: SessionService): SendShareUseCase
     {
-        return object : GetFollowerUseCase
+        return object : SendShareUseCase
         {
-            override suspend fun invoke(): List<User>
+            override suspend fun invoke(reviewId: Int, userId: List<Int>)
             {
-                val token = sessionService.getToken() ?: throw Exception("로그인을 해주세요.")
-
-                return apiProfile.getMyFollowing(token).map {
-                    User(userId = it.followerId, userName = it.userName, picture = BuildConfig.PROFILE_IMAGE_SERVER_URL + it.profilePicUrl)
-                }
+                delay(2000)
             }
         }
     }
