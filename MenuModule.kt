@@ -22,7 +22,7 @@ class MenuModule {
                 try {
                     val review = reviewDao.getFeedbyReviewId(reviewId = reviewId)
                     Log.d("_MenuModule", review.toString())
-                    val userId = loggedInUserDao.getLoggedInUser1()?.userId
+                    val userId = loggedInUserDao.getLoggedInUser()?.userId
                     Log.d("_MenuModule", "userId : ${userId}")
                     return review.userId == userId
                 } catch (e: Exception) {
