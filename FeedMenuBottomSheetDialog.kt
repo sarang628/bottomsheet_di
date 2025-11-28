@@ -2,15 +2,16 @@ package com.sarang.torang.di.bottomsheet_di
 
 import androidx.compose.runtime.Composable
 import com.sarang.torang.compose.bottomsheet.feed.FeedMenuModalBottomSheet
+import com.sarang.torang.dialogsbox.compose.type.MenuBottomSheetTypeData
 
-fun provideFeedMenuBottomSheetDialog(): @Composable (reviewId: Int, onClose: () -> Unit, onReport: (Int) -> Unit, onDelete: (Int) -> Unit, onEdit: (Int) -> Unit) -> Unit =
-    { reviewId, onClose, onReport, onDelete, onEdit ->
+fun provideFeedMenuBottomSheetDialog(): @Composable (MenuBottomSheetTypeData) -> Unit =
+    {
         FeedMenuModalBottomSheet(
             isExpand = true,
-            reviewId = reviewId,
-            onReport = { onReport.invoke(reviewId) },
-            onDelete = { onDelete.invoke(reviewId) },
-            onEdit = { onEdit.invoke(reviewId) },
-            onClose = onClose
+            reviewId = it.reviewId,
+            onReport = { it.onReport.invoke(it.reviewId) },
+            onDelete = { it.onDelete.invoke(it.reviewId) },
+            onEdit = { it.onEdit.invoke(it.reviewId) },
+            onClose = it.onClose
         )
     }
